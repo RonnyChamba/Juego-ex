@@ -19,8 +19,8 @@
 
     <!-- Activity Login-->
 
-    <string name="txtTitleLogin">Login</string>
-    <string name="txtCorreoLogin">Correo Electrónico</string>
+    <string name="txtTitleLogin">Inngreso</string>
+    <string name="txtCorreoLogin">Correo Electronico</string>
     <string name="txtPassLogin">Contraseña</string>
     <string name="txtBtnLogin">Ingresar</string>
 
