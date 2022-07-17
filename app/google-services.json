@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "941988806823",
+    "project_id": "proyecto-ex-12c04",
+    "storage_bucket": "proyecto-ex-12c04.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941988806823:android:6c3967ab7e7b1d0a99db82",
+        "android_client_info": {
+          "package_name": "com.example.juegomataex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "941988806823-garg0ech556bne2qggqkl5ldlll1fh0m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDln7UobfMJc7tL2VIHu4wDosS_RW-1Ivo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "941988806823-garg0ech556bne2qggqkl5ldlll1fh0m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
