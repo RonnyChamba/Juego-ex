@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.widget.Button;
@@ -46,6 +47,14 @@ public class Registro extends AppCompatActivity {
         btnRegistrar = findViewById(R.id.btnRegistrar);
 
         auth = FirebaseAuth.getInstance();
+
+        Typeface typeface = Typeface.createFromAsset(Registro.this.getAssets(), "fuentes/zombie.TTF");
+        txtTitulo.setTypeface(typeface);
+        txtEmail.setTypeface(typeface);
+        txtPassword.setTypeface(typeface);
+        txtNombre.setTypeface(typeface);
+        txtFecha.setTypeface(typeface);
+        btnRegistrar.setTypeface(typeface);
 
         Date date = new Date();
         SimpleDateFormat fecha = new SimpleDateFormat("d 'de' MMMM 'del'  yyyy");

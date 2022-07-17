@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-      //  Typeface typeface = Typeface.createFromAsset(MainActivity.this.getAssets(), "fuentes/zombie.TTF");
-        //btLogin.setTypeface(typeface);
-        //btRegistro.setTypeface(typeface);
+       Typeface typeface = Typeface.createFromAsset(MainActivity.this.getAssets(), "fuentes/zombie.TTF");
+        btLogin.setTypeface(typeface);
+        btRegistro.setTypeface(typeface);
 
     }
 

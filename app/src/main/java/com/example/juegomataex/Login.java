@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -35,6 +36,12 @@ public class Login extends AppCompatActivity {
         txtPassLogin = findViewById(R.id.passLogin);
         btnLogin = findViewById(R.id.btnIngresarLogin);
         auth = FirebaseAuth.getInstance();
+
+        Typeface typeface = Typeface.createFromAsset(Login.this.getAssets(), "fuentes/zombie.TTF");
+        btnLogin.setTypeface(typeface);
+        txtEmailLogin.setTypeface(typeface);
+        txtPassLogin.setTypeface(typeface);
+        txtTituloLogin.setTypeface(typeface);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
