@@ -2,12 +2,17 @@ package com.example.juegomataex;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
+import android.view.Display;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Random;
 
 public class EscenarioJuego extends AppCompatActivity {
 
@@ -15,6 +20,9 @@ public class EscenarioJuego extends AppCompatActivity {
     TextView txtContador, txtNombre, txtTiempo;
     ImageView imgZombie;
     int contador = 0;
+    Random aleatorio;
+    int anchoPantalla;
+    int altoPantalla;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +50,50 @@ public class EscenarioJuego extends AppCompatActivity {
 
             new Handler().postDelayed((() -> {
                 imgZombie.setImageResource(R.drawable.icono_ex);
+                movimiento();
             }), 500);
         });
+        pantalla();
 
+        cuentaAtras();
 
         Typeface fuente = Typeface.createFromAsset(EscenarioJuego.this.getAssets(), "fuentes/zombie.TTF");
         txtNombre.setTypeface(fuente);
         txtContador.setTypeface(fuente);
         txtTiempo.setTypeface(fuente);
+    }
+    private void cuentaAtras() {
+
+        new CountDownTimer(10000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                long segundosRestantes = millisUntilFinished / 1000;
+                txtTiempo.setText(segundosRestantes + " s");
+            }
+
+            @Override
+            public void onFinish() {
+                txtTiempo.setText("0s");
+
+
+            }
+        }.start();
+    }
+    private void pantalla() {
+        Display display = getWindowManager().getDefaultDisplay();
+        Point point = new Point();
+        display.getSize(point);
+        altoPantalla = point.y;
+        anchoPantalla = point.x;
+        aleatorio = new Random();
+    }
+    private void movimiento() {
+        int min = 0;
+        int maxX = anchoPantalla - imgZombie.getWidth();
+        int maxY = anchoPantalla - imgZombie.getHeight();
+        int randomX = aleatorio.nextInt(((maxX - min) + 1) + min);
+        int randomY = aleatorio.nextInt(((maxY - min) + 1) + min);
+        imgZombie.setX(randomX);
+        imgZombie.setY(randomY);
     }
 }
