@@ -2,6 +2,7 @@ package com.example.juegomataex;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -16,13 +17,16 @@ import java.util.Random;
 
 public class EscenarioJuego extends AppCompatActivity {
 
-    String nombre,email, uId, zombie;
+    String nombre, email, uId, zombie;
     TextView txtContador, txtNombre, txtTiempo;
     ImageView imgZombie;
     int contador = 0;
     Random aleatorio;
     int anchoPantalla;
     int altoPantalla;
+
+    boolean gameOver;
+    Dialog miDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,19 +43,22 @@ public class EscenarioJuego extends AppCompatActivity {
         uId = intent.getString("uId");
         nombre = intent.getString("nombres");
         email = intent.getString("email");
-        zombie= intent.getString("zombie");
+        zombie = intent.getString("zombie");
         txtNombre.setText(nombre);
         txtContador.setText(zombie);
 
-        imgZombie.setOnClickListener( (click) ->{
-            contador++;
-            txtContador.setText(String.valueOf(contador));
-            imgZombie.setImageResource(R.drawable.tumba);
+        imgZombie.setOnClickListener((click) -> {
+            if (!gameOver) {
+                contador++;
+                txtContador.setText(String.valueOf(contador));
+                imgZombie.setImageResource(R.drawable.tumba);
 
-            new Handler().postDelayed((() -> {
-                imgZombie.setImageResource(R.drawable.icono_ex);
-                movimiento();
-            }), 500);
+                new Handler().postDelayed((() -> {
+
+                    imgZombie.setImageResource(R.drawable.icono_ex);
+                    movimiento();
+                }), 500);
+            }
         });
         pantalla();
 
@@ -62,6 +69,7 @@ public class EscenarioJuego extends AppCompatActivity {
         txtContador.setTypeface(fuente);
         txtTiempo.setTypeface(fuente);
     }
+
     private void cuentaAtras() {
 
         new CountDownTimer(10000, 1000) {
@@ -74,11 +82,13 @@ public class EscenarioJuego extends AppCompatActivity {
             @Override
             public void onFinish() {
                 txtTiempo.setText("0s");
+                gameOver = true;
 
 
             }
         }.start();
     }
+
     private void pantalla() {
         Display display = getWindowManager().getDefaultDisplay();
         Point point = new Point();
@@ -87,6 +97,7 @@ public class EscenarioJuego extends AppCompatActivity {
         anchoPantalla = point.x;
         aleatorio = new Random();
     }
+
     private void movimiento() {
         int min = 0;
         int maxX = anchoPantalla - imgZombie.getWidth();
