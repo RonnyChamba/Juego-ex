@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.Display;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +41,7 @@ public class EscenarioJuego extends AppCompatActivity {
 
         Bundle intent = getIntent().getExtras();
 
+        miDialog = new Dialog(EscenarioJuego.this);
         uId = intent.getString("uId");
         nombre = intent.getString("nombres");
         email = intent.getString("email");
@@ -70,6 +72,36 @@ public class EscenarioJuego extends AppCompatActivity {
         txtTiempo.setTypeface(fuente);
     }
 
+    private void mensajeGameOver() {
+
+        Typeface typeface = Typeface.createFromAsset(EscenarioJuego.this.getAssets(), "fuentes/zombie.TTF");
+
+        TextView seAcaboTxt, hasMatadoTxt, numeroTxt;
+        Button jugarDeNuevo, irMenu, puntajes;
+
+        miDialog.setContentView(R.layout.gameover);
+        miDialog.setCancelable(false);
+
+        seAcaboTxt = miDialog.findViewById(R.id.seacaboTxt);
+        hasMatadoTxt = miDialog.findViewById(R.id.hasMatadoTxt);
+        numeroTxt = miDialog.findViewById(R.id.numeroTxt);
+
+        jugarDeNuevo = miDialog.findViewById(R.id.jugarDeNuevo);
+        irMenu = miDialog.findViewById(R.id.irMenu);
+        puntajes = miDialog.findViewById(R.id.puntajes);
+
+        String zombies = String.valueOf(contador);
+        numeroTxt.setText(zombies);
+
+        seAcaboTxt.setTypeface(typeface);
+        hasMatadoTxt.setTypeface(typeface);
+        numeroTxt.setTypeface(typeface);
+        jugarDeNuevo.setTypeface(typeface);
+        irMenu.setTypeface(typeface);
+        puntajes.setTypeface(typeface);
+        miDialog.show();
+
+    }
     private void cuentaAtras() {
 
         new CountDownTimer(10000, 1000) {
@@ -83,6 +115,7 @@ public class EscenarioJuego extends AppCompatActivity {
             public void onFinish() {
                 txtTiempo.setText("0s");
                 gameOver = true;
+                mensajeGameOver();
 
 
             }
