@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,19 +28,14 @@ public class Menu extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser user;
 
-    Button btnJugar;
-    Button btnPuntuacion;
-    Button btnAcercaDe;
+    Button btnJugar, btnPuntuacion, btnAcercaDe;
 
-    TextView txtTituloMenu;
-    TextView txtUidJugadorMenu;
-    TextView txtZombieMenu;
-    TextView txtSubTituloMenu;
-    TextView txtCorreoJugadorMenu;
-    TextView txtNombreJugadorMenu;
+    TextView txtTituloMenu, txtUidJugadorMenu, txtZombieMenu , txtSubTituloMenu,
+            txtCorreoJugadorMenu, txtNombreJugadorMenu;
 
     FirebaseDatabase database;
     DatabaseReference jugadores;
+    ImageView imagen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +81,7 @@ public class Menu extends AppCompatActivity {
         btnCerrarSesion.setOnClickListener((event) -> cerrarSesion());
 
         Typeface typeface = Typeface.createFromAsset(Menu.this.getAssets(), "fuentes/zombie.TTF");
-
+        imagen = findViewById(R.id.imageGif);
         btnJugar.setTypeface(typeface);
         btnPuntuacion.setTypeface(typeface);
         btnAcercaDe.setTypeface(typeface);
@@ -94,6 +92,10 @@ public class Menu extends AppCompatActivity {
         txtSubTituloMenu.setTypeface(typeface);
         txtCorreoJugadorMenu.setTypeface(typeface);
         txtNombreJugadorMenu.setTypeface(typeface);
+
+        String url = "https://i.pinimg.com/originals/c0/85/a9/c085a987f6a56f064454ce0ef4524552.gif";
+        Uri urlParse = Uri.parse(url);
+        Glide.with(getApplicationContext()).load(urlParse).into(imagen);
 
     }
     private void cerrarSesion() {

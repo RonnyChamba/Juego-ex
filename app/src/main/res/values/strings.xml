@@ -20,7 +20,7 @@
 
     <!-- Activity Login-->
 
-    <string name="txtTitleLogin">Inngreso</string>
+    <string name="txtTitleLogin">Ingreso</string>
     <string name="txtCorreoLogin">Correo Electronico</string>
     <string name="txtPassLogin">Contraseña</string>
     <string name="txtBtnLogin">Ingresar</string>

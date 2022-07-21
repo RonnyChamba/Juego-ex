@@ -27,8 +27,8 @@
                 android:text="@string/txtTitleRegistro"
                 android:textSize="@dimen/sizeTitle"
                 android:textStyle="bold"
-                android:textColor="@color/color_botones"
-                android:layout_marginBottom="0dp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="20dp"
                 android:textAlignment="center"/>
 
             <ImageView
@@ -52,8 +52,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:background="@color/white"
+                android:textColor="@color/color_fondo"
                 android:hint="@string/txtEmail"/>
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -66,6 +66,7 @@
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/color_fondo"
                 android:inputType="textPassword"
                 android:hint="@string/txtPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -81,6 +82,7 @@
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/color_fondo"
                 android:hint="@string/txtNombre"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,10 +90,11 @@
             android:id="@+id/txtFecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="@dimen/mg_tb"
             android:textAlignment="center"
             android:textSize="18dp"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:text="@string/txtFecha"
             />

@@ -12,6 +12,15 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         app:srcCompat="@drawable/corazon_herido" />
+    <TextView
+        android:id="@+id/txTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="@dimen/sizeTitle"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/white"
+        android:text="Mata Ex"/>
 </LinearLayout>
